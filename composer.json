@@ -1,0 +1,41 @@
+{
+    "name": "myolchauz/mycashbackclient",
+    "description": ":package_description",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Author Name",
+            "email": "author@email.com",
+            "homepage": "http://author.com"
+        }
+    ],
+    "homepage": "https://github.com/myolchauz/mycashbackclient",
+    "keywords": ["Laravel", "Mycashbackclient"],
+    "require": {
+        "illuminate/support": "~9|~8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Myolchauz\\Mycashbackclient\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Myolchauz\\Mycashbackclient\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Myolchauz\\Mycashbackclient\\MycashbackclientServiceProvider"
+            ],
+            "aliases": {
+                "Mycashbackclient": "Myolchauz\\Mycashbackclient\\Facades\\Mycashbackclient"
+            }
+        }
+    }
+}
