@@ -3,19 +3,21 @@
 namespace Myolchauz\Mycashbackclient;
 
 use Myolchauz\Mycashbackclient\DTO\MycashbackclientDTO;
+use Myolchauz\Mycashbackclient\Repositories\Interfaces\GuzzleSendRequestInterface;
 use Myolchauz\Mycashbackclient\Repositories\Interfaces\MyCashbackClientRepositoryInterface;
 
 class Mycashbackclient
 {
-    public function sendRequestForCashback($user_id, $cashback_action_id, $attributes) {
-        $myCashbackClientDTO = new MycashbackclientDTO($user_id, $cashback_action_id, $attributes);
-        $requestImplementation = $myCashbackClientDTO->getImplementationType(config('mycashbackclient.requesting_service_type'));
-        $this->processRequestForCashback($requestImplementation, $myCashbackClientDTO);
+    private $myCashbackClientRepository;
 
-        return "";
+    public function __construct(MyCashbackClientRepositoryInterface $myCashbackClientRepository)
+    {
+        $this->myCashbackClientRepository = $myCashbackClientRepository;
     }
 
-    protected function processRequestForCashback(MyCashbackClientRepositoryInterface $myCashbackClientRepository, $cashbackActionDTO) {
-        $myCashbackClientRepository->sendRequestForCashback($cashbackActionDTO);
+    public function sendRequestForCashback(GuzzleSendRequestInterface $guzzleSendRequest) {
+        $response = $this->myCashbackClientRepository->sendRequestForCashback($guzzleSendRequest);
+
+        return $response;
     }
 }
