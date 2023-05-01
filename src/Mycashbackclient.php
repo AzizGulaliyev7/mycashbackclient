@@ -2,21 +2,13 @@
 
 namespace Myolchauz\Mycashbackclient;
 
-use Myolchauz\Mycashbackclient\Repositories\Interfaces\GuzzleSendRequestInterface;
-use Myolchauz\Mycashbackclient\Repositories\Interfaces\MyCashbackClientRepositoryInterface;
+use Myolchauz\Mycashbackclient\Repositories\Interfaces\CashbackRequestBuilderInterface;
 
 class Mycashbackclient
 {
-    private $myCashbackClientRepository;
-
-    public function __construct(MyCashbackClientRepositoryInterface $myCashbackClientRepository)
-    {
-        $this->myCashbackClientRepository = $myCashbackClientRepository;
-    }
-
-    public function sendRequestForCashback(GuzzleSendRequestInterface $guzzleSendRequest) {
-        $response = $this->myCashbackClientRepository->sendRequestForCashback($guzzleSendRequest);
-
-        return $response;
+    public function sendRequestForCashback(CashbackRequestBuilderInterface $cashbackRequestBuilder) {
+        $response = $cashbackRequestBuilder->sendRequest();
+        $handlingResponse = new HandlingResponse();
+        return $handlingResponse->handleResponse($response);
     }
 }

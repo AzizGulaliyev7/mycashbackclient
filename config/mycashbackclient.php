@@ -10,14 +10,13 @@ return [
 
     'requesting_service_type' => 'guzzleClient',
 
-
     /**
      *
      *
      */
 
     'guzzleClient' => [
-        'cashback_app_base_url' => 'http://127.0.0.1:8000/api/v1/',
+        'cashback_app_base_url' => 'http://127.0.0.1:8080/api/v1/',
         'method_type' => "POST",
         'path' => 'cashback',
         'method' => 'CashbackForCustomer@cashback'
