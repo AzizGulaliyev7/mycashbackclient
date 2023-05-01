@@ -2,7 +2,6 @@
 
 namespace Myolchauz\Mycashbackclient;
 
-use Myolchauz\Mycashbackclient\DTO\MycashbackclientDTO;
 use Myolchauz\Mycashbackclient\Repositories\Interfaces\GuzzleSendRequestInterface;
 use Myolchauz\Mycashbackclient\Repositories\Interfaces\MyCashbackClientRepositoryInterface;
 
